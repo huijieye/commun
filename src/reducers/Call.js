@@ -1,74 +1,64 @@
 const initialState = {
     loading:false,
-    userInfo:null,
+    call:null,
+    list:null,
     error:false
 }
 
-
-
-export function loginReducer(state = initialState, action) {
-    switch (action.type){
-        case "user_fetch_login":
+export function callReducer(state = initialState, action) {
+    switch (action.type) {
+        case "call_fetch_create":
             return {
                 ...state,
-                loading:true
+                loading: true
             }
-
-        case "user_login_succes":
+        case "call_create_succes":
             return {
                 ...state,
                 loading:false,
-                userInfo: action.user
+                call: action.call
             }
-        case "user_login_error":
+        case "call_create_error":
             return {
                 ...state,
                 loading:false,
                 error: action.error
             }
-        case "user_login_out":
+        case "call_fetch_delete":
             return {
                 ...state,
-                loading:false
+                loading: true
             }
-        case "user_fetch_update":
-            return{
-                ...state,
-                loading:true
-            }
-        case "user_update_success":
-            return{
+        case "call_delete_succes":
+            return {
                 ...state,
                 loading:false,
-                userInfo:action.user
+                call: null
             }
-        case "updateFail":{
+        case "call_delete_error":
             return {
                 ...state,
                 loading:false,
                 error: action.error
             }
-        }
-        case "signupUpdate":
-            return{
+        case "call_fetch_show":
+            return {
                 ...state,
-                loading:true
+                loading: true
             }
-        case "signupSuccess":
-            return{
+        case "call_show_succes":
+            return {
                 ...state,
                 loading:false,
-                userInfo:action.user
+                list: action.list
             }
-        case "signupFail":{
+        case "call_show_error":
             return {
                 ...state,
                 loading:false,
                 error: action.error
             }
-        }
         default:
             return state
     }
-
 }

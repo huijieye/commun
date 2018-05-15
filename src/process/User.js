@@ -1,21 +1,41 @@
-import {fetchLogin,loginSucces,loginFail,loginOut} from '../actions/User';
+import * as Actions from '../actions/User';
 import axios from 'axios';
 
 export function loginProcess(dispatch,login) {
-    dispatch(fetchLogin())
+    dispatch(Actions.fetchLogin())
 
     axios.get('https://noodledistress.herokuapp.com/user/login/'+login).then(res => {
         if(res.status === 200){
-            dispatch(loginSucces(res.data))
+            dispatch(Actions.loginSucces(res.data))
         }
         else{
-            dispatch(loginFail('erreur'))
+            dispatch(Actions.loginFail('erreur'))
         }
     }).catch(error => {
-        dispatch(loginFail(error))
+        dispatch(Actions.loginFail(error))
     })
 }
 
 export function loginOutProcess(dispatch) {
-    dispatch(loginOut())
+    dispatch(Actions.loginOut())
+}
+
+export function updateProcess(dispatch,user) {
+    dispatch(Actions.fetchUpdate())
+
+    axios.put('https://noodledistress.herokuapp.com/user/',user).then(res => {
+        dispatch(Actions.updateSuccess(res.data))
+    }).catch(error => {
+        dispatch(Actions.updateFail(error))
+    })
+}
+
+export function signupProcess(dispatch,user) {
+    dispatch(Actions.signupUpdate())
+
+    axios.post('https://noodledistress.herokuapp.com/user/',user).then(res => {
+        dispatch(Actions.signupSuccess(res.data))
+    }).catch(error => {
+        dispatch(Actions.signupFail(error))
+    })
 }

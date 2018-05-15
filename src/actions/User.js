@@ -23,3 +23,43 @@ export function loginOut() {
         type:"user_login_out",
     }
 }
+
+export function fetchUpdate() {
+    return{
+        type:"user_fetch_update"
+    }
+}
+
+export function updateSuccess(user) {
+    return{
+        type:"user_update_success",
+        user
+    }
+}
+
+export function updateFail(error) {
+    return {
+        type:"user_update_error",
+        error
+    }
+}
+
+export function signupUpdate() {
+    return{
+        type:"user_fetch_signup"
+    }
+}
+
+export function signupSuccess(user) {
+    return{
+        type:"user_signup_success",
+        user
+    }
+}
+
+export function signupFail(error) {
+    return {
+        type:"user_signup_error",
+        error
+    }
+}
