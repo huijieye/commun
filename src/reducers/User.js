@@ -1,10 +1,10 @@
 const initialState = {
     loading:false,
-    user:null,
+    userInfo:null,
     error:false
 }
 
-function loginReducer(state = initialState, action) {
+export function loginReducer(state = initialState, action) {
     switch (action.type){
         case "user_fetch_login":
             return {
@@ -16,7 +16,7 @@ function loginReducer(state = initialState, action) {
             return {
                 ...state,
                 loading:false,
-                user: action.user
+                userInfo: action.user
             }
         case "user_login_error":
             return {

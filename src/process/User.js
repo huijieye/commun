@@ -3,8 +3,14 @@ import axios from 'axios';
 
 export function loginProcess(dispatch,login) {
     dispatch(fetchLogin())
+
     axios.get('https://noodledistress.herokuapp.com/user/login/'+login).then(res => {
-        dispatch(loginSucces(res))
+        if(res.status === 200){
+            dispatch(loginSucces(res.data))
+        }
+        else{
+            dispatch(loginFail('erreur'))
+        }
     }).catch(error => {
         dispatch(loginFail(error))
     })
