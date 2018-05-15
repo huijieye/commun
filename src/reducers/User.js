@@ -1,7 +1,8 @@
 const initialState = {
     loading:false,
     userInfo:null,
-    error:false
+    error:false,
+    watch:null
 }
 
 
@@ -67,6 +68,11 @@ export function loginReducer(state = initialState, action) {
                 error: action.error
             }
         }
+        case "setWatch":
+            return{
+                ...state,
+                watch:action.watchId
+            }
         default:
             return state
     }

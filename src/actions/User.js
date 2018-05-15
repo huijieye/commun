@@ -63,3 +63,30 @@ export function signupFail(error) {
         error
     }
 }
+
+export function userWatch() {
+    return{
+        type:"user_fetch_watch"
+    }
+}
+
+export function watchSuccess(user) {
+    return{
+        type:"user_watch_success",
+        user
+    }
+}
+
+export function watchFail(error) {
+    return {
+        type:"user_watch_error",
+        error
+    }
+}
+
+export function setWatch(watchId) {
+    return {
+        type:"setWatch",
+        watchId
+    }
+}
