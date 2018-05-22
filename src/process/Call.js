@@ -30,9 +30,18 @@ export function showProcess(dispatch,user) {
     dispatch(Actions.fetchShow())
 
     axios.get('https://noodledistress.herokuapp.com/call/filter/'+user).then(res => {
-        console.log(res.data)
         dispatch(Actions.showSucces(res.data))
     }).catch(error => {
         dispatch(Actions.showFail(error))
+    })
+}
+
+export function answersProcess(dispatch,userId,callId) {
+    dispatch(Actions.fetchAnswers())
+
+    axios.post('https://noodledistress.herokuapp.com/answer/'+userId+'/'+callId).then(res => {
+        dispatch(Actions.answersSucces(res.data))
+    }).catch(error => {
+        dispatch(Actions.answersFail(error))
     })
 }

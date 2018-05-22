@@ -2,7 +2,8 @@ const initialState = {
     loading:false,
     call:null,
     list:null,
-    error:false
+    error:false,
+    answer:null
 }
 
 export function callReducer(state = initialState, action) {
@@ -53,6 +54,24 @@ export function callReducer(state = initialState, action) {
                 list: action.list
             }
         case "call_show_error":
+            return {
+                ...state,
+                loading:false,
+                error: action.error
+            }
+        case "call_fetch_answers":
+            return {
+                ...state,
+                loading: true
+            }
+        case "call_answers_succes":
+            console.log(action)
+            return {
+                ...state,
+                loading:false,
+                answer: action.call.answerer
+            }
+        case "call_answers_error":
             return {
                 ...state,
                 loading:false,

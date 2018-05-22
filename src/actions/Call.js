@@ -57,3 +57,23 @@ export function showFail(error) {
         error
     }
 }
+
+export function fetchAnswers() {
+    return {
+        type:"call_fetch_answers"
+    }
+}
+
+export function answersSucces(call) {
+    return {
+        type:"call_answers_succes",
+        call
+    }
+}
+
+export function answersFail(error) {
+    return {
+        type:"call_answers_error",
+        error
+    }
+}
